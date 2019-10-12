@@ -21,7 +21,7 @@ class Command
     private $command;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $enabled;
 
@@ -90,7 +90,7 @@ class Command
      *
      * @return self
      */
-    public function setEnabled(boolean $enabled)
+    public function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
 

@@ -156,10 +156,10 @@ class Daemon
      */
     private function parseConfig()
     {
+        $this->commands = [];
         if (is_readable($this->configPath)) {
             $iniConfig = parse_ini_file($this->configPath, true);
-
-            $this->commands = [];
+            
             foreach ($iniConfig as $id => $item) {
                 $commandLine = strval($item['command'] ?? '');
                 $enabled = boolval($item['enabled'] ?? false);
