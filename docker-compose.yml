@@ -1,0 +1,25 @@
+version: '3.7'
+networks:
+  ijlp_net:
+    driver: bridge
+  component_net:
+    driver: bridge
+    external: true
+services:
+  tools:
+    build: .
+    container_name: tools
+    image: ijlp_tools
+    networks:
+      - ijlp_net
+      - component_net
+    restart: always
+    stdin_open: true
+    tty: true
+    privileged: true
+    external_links:
+      - redis
+    ports:
+      - '9551:9501'
+    volumes:
+      - .:/home/www
