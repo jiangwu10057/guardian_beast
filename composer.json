@@ -47,7 +47,7 @@
         ],
         "test_cover": "./vendor/phpunit/phpunit/phpunit"
     },
-    "license": "MulanPSL",
+    "license": "BSD",
     "authors": [
         {
             "name": "jiangwu10057",
