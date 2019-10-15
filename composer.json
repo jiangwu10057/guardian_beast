@@ -47,7 +47,7 @@
         ],
         "test_cover": "./vendor/phpunit/phpunit/phpunit"
     },
-    "license": "BSD",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "jiangwu10057",
