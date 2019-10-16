@@ -53,10 +53,10 @@
             "email": "jiangwu10057@qq.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
-            "master": "0.1"
+            "dev-master": "0.1"
         }
     }
 }
