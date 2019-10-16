@@ -7,6 +7,12 @@ https://segmentfault.com/a/1190000019927916
 https://segmentfault.com/a/1190000020038282
 https://segmentfault.com/a/1190000020254600
 
+安装
+
+```
+composer require jiangwu10057/guardian_beast:dev-master
+```
+
 使用方法
 
 ```

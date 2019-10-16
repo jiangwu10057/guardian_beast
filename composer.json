@@ -4,8 +4,8 @@
     "type": "library",
     "config": {
         "platform": {
-            "php": "7.2.10",
-            "ext-pcntl": "7.2.10"
+            "php": "7.0.12",
+            "ext-pcntl": "7.0.12"
         },
         "optimize-autoloader": true,
         "sort-packages": true
