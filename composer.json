@@ -16,8 +16,7 @@
             "url": "https://packagist.phpcomposer.com"
         }
     },
-    "require": {
-    },
+    "require": {},
     "require-dev": {
         "swoole/ide-helper": "^4.4",
         "phpstan/phpstan": "^0.11.2",
@@ -54,5 +53,10 @@
             "email": "jiangwu10057@qq.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "master": "0.1"
+        }
+    }
 }
