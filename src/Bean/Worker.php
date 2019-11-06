@@ -26,7 +26,7 @@ class Worker
      *
      * @return bool
      */
-    public function getStopping()
+    public function isStopping()
     {
         return $this->stopping;
     }

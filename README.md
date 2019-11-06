@@ -31,3 +31,7 @@ $daemonMany->run();
 ```
 kill -usr1 pid
 ```
+
+# 测试问题
+
+1 修改 daemon.ini 文件并发送 usr1 指令没有正确重载
