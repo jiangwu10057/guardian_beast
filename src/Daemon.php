@@ -53,7 +53,6 @@ class Daemon
             if ($ret = Process::wait(false)) {
                 $retPid = intval($ret['pid'] ?? 0);
                 $index = $this->getIndexOfWorkerByPid($retPid);
-
                 if (false !== $index) {
                     if ($this->workers[$index]->isStopping()) {
                         printf("[%s] 移除守护 %s\n", date('Y-m-d H:i:s'), $this->workers[$index]->getCommand()->getId());
