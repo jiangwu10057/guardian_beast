@@ -19,28 +19,28 @@ class Worker
     /**
      * @var bool
      */
-    private $stopping;
+    private $enabled;
 
     /**
-     * Get the value of stopping.
+     * Get the value of enabled.
      *
      * @return bool
      */
-    public function isStopping()
+    public function isEnabled()
     {
-        return $this->stopping;
+        return $this->enabled;
     }
 
     /**
-     * Set the value of stopping.
+     * Set the value of enabled.
      *
-     * @param bool $stopping
+     * @param bool $enabled
      *
      * @return self
      */
-    public function setStopping(bool $stopping)
+    public function setEnabled(bool $enabled)
     {
-        $this->stopping = $stopping;
+        $this->enabled = $enabled;
 
         return $this;
     }

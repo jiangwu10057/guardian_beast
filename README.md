@@ -16,9 +16,6 @@ composer require jiangwu10057/guardian_beast:dev-master
 使用方法
 
 ```
-$pid = posix_getpid();
-printf("主进程号: {$pid}\n");
-
 $configPath = dirname(__DIR__) . "/config/daemon.ini";
 
 $daemonMany = new Daemon($configPath);
@@ -37,4 +34,3 @@ kill -HUP pid
 
 1正在运行的设置为暂停会失败，还会产生孤儿进程
 2主进程被kill了，守护的进程没有一起关闭
-3如果主进程主动ctrl+c子进程会一起被销毁

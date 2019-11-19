@@ -14,12 +14,8 @@ class DaemonTest extends TestCase
      */
     public function index()
     {
-        $pid = posix_getpid();
-        printf("主进程号: {$pid}\n");
-
         $configPath = dirname(__DIR__).'/tests/config/daemon.ini';
         $daemonMany = new Daemon($configPath);
-
         $daemonMany->run();
     }
 }

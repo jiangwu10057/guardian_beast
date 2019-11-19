@@ -32,8 +32,10 @@ class Daemon
 
     public function run()
     {
+        Process::daemon();
         $this->loadWorkers();
-
+        $pid = getmypid();
+        printf("主进程号: {$pid}\n");
         pcntl_signal(SIGHUP, function () {
             printf("收到重载配置信号\n");
             $this->loadWorkers();
@@ -50,20 +52,20 @@ class Daemon
     {
         while (1) {
             pcntl_signal_dispatch();
-            if ($ret = Process::wait(false)) {
+            if ($ret = Process::wait(false)) {//进程退出时调用
                 $retPid = intval($ret['pid'] ?? 0);
                 $index = $this->getIndexOfWorkerByPid($retPid);
                 if (false !== $index) {
-                    if ($this->workers[$index]->isStopping()) {
-                        printf("[%s] 移除守护 %s\n", date('Y-m-d H:i:s'), $this->workers[$index]->getCommand()->getId());
-
-                        unset($this->workers[$index]);
-                    } else {
+                    if ($this->workers[$index]->isEnabled()) {
                         $command = $this->workers[$index]->getCommand()->getCommand();
                         $newPid = $this->createWorker($command);
                         $this->workers[$index]->setPid($newPid);
-
                         printf("[%s] 重新拉起 %s\n", date('Y-m-d H:i:s'), $this->workers[$index]->getCommand()->getId());
+                    } else {
+
+                        printf("[%s] 移除守护 %s\n", date('Y-m-d H:i:s'), $this->workers[$index]->getCommand()->getId());
+
+                        unset($this->workers[$index]);
                     }
                 }
             }
@@ -79,10 +81,10 @@ class Daemon
         foreach ($this->commands as $command) {
             if ($command->isEnabled()) {
                 printf("[%s] 启用 %s\n", date('Y-m-d H:i:s'), $command->getId());
-                $this->startWorker($command);
+                $this->enAbleWorker($command);
             } else {
                 printf("[%s] 停用 %s\n", date('Y-m-d H:i:s'), $command->getId());
-                $this->stopWorker($command);
+                $this->disableWorker($command);
             }
         }
     }
@@ -92,7 +94,7 @@ class Daemon
      *
      * @param Command $command
      */
-    private function startWorker(Command $command)
+    private function enAbleWorker(Command $command)
     {
         $index = $this->getIndexOfWorker($command->getId());
         if (false === $index) {
@@ -101,7 +103,10 @@ class Daemon
             $worker = new Worker();
             $worker->setPid($pid);
             $worker->setCommand($command);
+            $worker->setEnabled(true);
             $this->workers[] = $worker;
+        }else{
+            $this->workers[$index]->setEnabled(true);
         }
     }
 
@@ -110,11 +115,11 @@ class Daemon
      *
      * @param Command $command
      */
-    private function stopWorker(Command $command)
+    private function disableWorker(Command $command)
     {
         $index = $this->getIndexOfWorker($command->getId());
         if (false !== $index) {
-            $this->workers[$index]->setStopping(true);
+            $this->workers[$index]->setEnabled(false);
         }
     }
 
