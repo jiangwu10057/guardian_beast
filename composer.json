@@ -57,6 +57,6 @@
         "format_checking":"./vendor/bin/phpcs -p --extensions=php --standard=PSR2 --error-severity=1 --warning-severity=0 src",
         "format":"./vendor/bin/phpcbf -p --extensions=php --standard=PSR2 --error-severity=1 --warning-severity=0 src",
         "static_analysis":"./vendor/bin/phpstan analyse --memory-limit 300M -l 4 -a vendor/autoload.php src",
-        "general_doc":" ./vendor/bin/openapi -o api.json --pattern '*.php' --format json src"
+        "general_doc":"./vendor/bin/openapi -o api.json --pattern '*.php' --format json src"
     }
 }
