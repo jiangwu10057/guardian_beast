@@ -62,7 +62,6 @@ class Daemon
                         $this->workers[$index]->setPid($newPid);
                         printf("[%s] 重新拉起 %s\n", date('Y-m-d H:i:s'), $this->workers[$index]->getCommand()->getId());
                     } else {
-
                         printf("[%s] 移除守护 %s\n", date('Y-m-d H:i:s'), $this->workers[$index]->getCommand()->getId());
 
                         unset($this->workers[$index]);
@@ -105,7 +104,7 @@ class Daemon
             $worker->setCommand($command);
             $worker->setEnabled(true);
             $this->workers[] = $worker;
-        }else{
+        } else {
             $this->workers[$index]->setEnabled(true);
         }
     }
@@ -124,7 +123,7 @@ class Daemon
     }
 
     /**
-     * @param $commandId
+     * @param string $commandId
      *
      * @return bool|int|string
      */
@@ -140,7 +139,7 @@ class Daemon
     }
 
     /**
-     * @param $pid
+     * @param int $pid
      *
      * @return bool|int|string
      */
@@ -180,7 +179,7 @@ class Daemon
     /**
      * 创建子进程，并返回子进程 id.
      *
-     * @param $command
+     * @param string $command
      *
      * @return int
      */

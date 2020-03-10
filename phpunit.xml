@@ -21,6 +21,7 @@
             <directory suffix=".php">application</directory>
             <!-- <exclude>
                 <directory suffix=".php">application/tests</directory>
+                <directory suffix=".php">application/controllers</directory>
             </exclude> -->
         </whitelist>
     </filter>
@@ -29,6 +30,14 @@
     </logging>
 
     <php>
-        <const name="ENV" value="dev"/>
+        <const name="APP_ENV" value="dev"/>
+        <const name="APPLICATION_PATH" value="/home/www/project/www/"/>
+        <const name="APP_PATH" value="."/>
+        <const name="APP_PROJECT" value="www"/>
+        <server name="REMOTE_ADDR" value="127.0.0.1"/>
+        <server name="REQUEST_URI" value="index.php"/>
+        <server name="HTTP_X_FORWARDED_FOR" value="192.168.6.83"/>
+        <server name="REQUEST_TIME" value="1568935602"/>
+        <server name="HTTP_USER_AGENT" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36"/>
     </php>
 </phpunit>
